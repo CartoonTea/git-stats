@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html ng-app="gitStats">
 <head lang="en">
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GitStats|</title>
+<link rel="stylesheet" href="/client/lib/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet/less" type="text/css" href="/client/assests/style.less">
+<link rel="stylesheet" href="/client/lib/font-awesome/css/font-awesome.css">
 </head>
 <body>
-<div ui-view class="container-fluid">
-
+<div class="container-fluid">
+    <div ui-view>
+    </div>
 </div>
+
+<!--Scripts-->
+<script src="/client/lib/angular/angular.js"></script>
+<script src="/client/lib/jquery/dist/jquery.js"></script>
+<script src="/client/lib/less.js/dist/less.js"></script>
+<script src="/client/lib/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="app.js"></script>
+<script src="/client/lib/bootstrap/dist/js/bootstrap.js"></script>
+<!--controllers-->
+<script src="/client/scripts/controllers/homeCtrl.js"></script>
+<!--End Scripts-->
 </body>
 </html>

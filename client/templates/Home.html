@@ -1,3 +1,38 @@
-<div>
-    <h1>Welcome !</h1>
+<div class="row">
+    <div class="container loginBox">
+        <h1>GitStats</h1>
+        <div class="row container col-md-2 private">
+            <label>Private Auth</label>
+            <a href={{redirectPrivatePath}} ><i id="gitLoginPublic"  class="fa fa-github fa-5x"></i></a>
+        </div>
+        <div class="row container col-md-2 public">
+            <label>Public Auth</label>
+            <a ref={{redirectPublicPath}} ><i id="gitLoginPrivate" h class="fa fa-github fa-5x"></i></a>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="gitLoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Login</h4>
+                </div>
+                    <div class="modal-body">
+                    <form role="form">
+                        <label>Username</label>
+                        <input type="text" placeholder="Username" class="form-control">
+                        <div class="input-group"></div>
+                        <label>Password</label>
+                        <input type="password" class="form-control" placeholder="*****">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Login</button>
+                    <button type="button" class="btn btn-primary">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,18 +1,20 @@
-var app = angular.module('gitStats' , [
-    'ui.route',
-])
-.config((function($stateProvider, $urlRouterProvider) {
+var gitStats = angular.module('gitStats' , [
+    'ui.router'
+]);
+gitStats.config((function($stateProvider,$urlRouterProvider,$httpProvider) {
 
         $urlRouterProvider.otherwise('/Home');
-
+        $httpProvider.defaults.useXDomain = true;
         $stateProvider
+
             .state('Home', {
                 url: '/Home',
-                templateUrl: 'tempates/Home.html'
+                templateUrl: 'templates/Home.html',
+                controller:'homeCtrl'
             })
             .state('Dashboard', {
                 url: '/Dashboard',
-                templateUrl: 'tempates/Dashboard.html'
-            });
+                templateUrl: 'templates/Dashboard.html'
+            })
 
-    });
+    }));
