@@ -4,6 +4,7 @@ var path          = require('path');
 var publicFolder  = path.join(__dirname + '/../client');
 var github        = require('octonode');
 var tasks         = require('./tasks');
+var models        = require('./models');
 var port = 3000;
 
 // serve the client folder statically
