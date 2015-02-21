@@ -1,4 +1,4 @@
-var app = angular.module('gitstats' , [
+var app = angular.module('gitStats' , [
     'ui.route',
 ])
 .config(function($stateProvider) {
