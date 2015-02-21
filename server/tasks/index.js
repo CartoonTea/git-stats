@@ -1,3 +1,3 @@
 module.exports = {
-  auth: require('./auth')
+  validateToken: require('./validate-token')
 };
