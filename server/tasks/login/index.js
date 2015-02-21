@@ -1,7 +1,21 @@
-module.exports = function (inputData, callback) {
-  // run some functions on inputData
-  // if error
-  callback('something went wrong');
-  // if no error
-  callback(null, responseData);
+/**
+ * Logs a user in
+ */
+module.exports = function (data, callback) {
+  console.log(data);
+  github.auth.login(data.code, function (err, token) {
+    if (err) { 
+      callback(err);
+      return;
+    }
+    client = github.client(token);
+    client.me().info(function (err, data, headers) {
+      if (err) {
+        callback(err);
+        return;
+      }
+      data.token = token;
+      return data;
+    });
+  });
 };
