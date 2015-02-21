@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/CartoonTea/git-stats/issues"
   },
-  "homepage": "https://github.com/CartoonTea/git-stats"
+  "homepage": "https://github.com/CartoonTea/git-stats",
+  "dependencies": {
+    "express": "^4.11.2"
+  }
 }
