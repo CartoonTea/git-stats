@@ -1,0 +1,16 @@
+{
+  "name": "git-stats",
+  "version": "0.0.0",
+  "homepage": "https://github.com/CartoonTea/git-stats",
+  "authors": [
+    "Connor Bode <connor.bode@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
