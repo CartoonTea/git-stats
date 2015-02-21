@@ -9,6 +9,10 @@ var port = 3000;
 // serve the client folder statically
 app.use('/client', express.static(publicFolder));
 
+app.get('/api/login', function (req, res) {
+  res.status(200).json({'response': 'success'}).end();
+});
+
 // redirect all other requests to the index file
 app.get('*', function (req, res) {
   res.sendFile(publicFolder + '/index.html');
