@@ -1,5 +1,6 @@
 var express       = require('express');
 var validator     = require('express-validator');
+var session       = require('express-session');
 var bodyParser    = require('body-parser');
 var app           = express();
 var path          = require('path');
@@ -32,7 +33,8 @@ global.client = {};
  */
 
 app.use('/client', express.static(publicFolder));
-app.use(bodyParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(validator());
 app.use(session({
   secret: 'blender dem webz eh',
@@ -43,6 +45,7 @@ app.use(function (req, res, next) {
   if (req.session.token) {
     client = github.client(req.session.token);
   }
+  next();
 });
 
 
@@ -56,13 +59,9 @@ app.post('/api/session', function (req, res) {
   var errors;
   req.checkBody('code', 'code parameter is missing').notEmpty();
   errors = req.validationErrors();
-  if (errors) {
-    res.status(400).json(errors).end();
-  }
+  if (errors) { return res.status(400).json(errors).end(); }
   tasks.login({ code: req.params.code }, function (err, data) {
-    if (err) {
-      res.status(500).json(err).end();
-    }
+    if (err) { return res.status(500).json(err).end(); }
     req.session.email = data.email;
     req.session.token = data.token;
     res.status(200).json({
@@ -75,8 +74,9 @@ app.post('/api/session', function (req, res) {
 // gets a session
 app.get('/api/session', function (req, res) {
   if (!req.session.email || !req.session.token) {
-    res.status(400).json({ error: 'not logged in' }).end();
+    return res.status(400).json({ error: 'not logged in' }).end();
   }
+
   res.status(200).json({
     email: req.session.email,
     token: req.session.token
