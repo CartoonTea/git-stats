@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/CartoonTea/git-stats",
   "dependencies": {
-    "express": "^4.11.2"
+    "express": "^4.11.2",
+    "sequelize": "^2.0.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11"
   }
 }
