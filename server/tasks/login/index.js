@@ -2,7 +2,7 @@
  * Logs a user in
  */
 module.exports = function (data, callback) {
-  debugger;
+  console.log(data);
   github.auth.login(data.code, function (err, token) {
     if (err) { 
       callback(err);
