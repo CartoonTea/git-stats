@@ -8,6 +8,7 @@ var publicFolder  = path.join(__dirname + '/../client');
 var github        = require('octonode');
 var tasks         = require('./tasks');
 var models        = require('./models');
+var repomodels    = require('./models/repository.js');
 var port = 3000;
 
 
