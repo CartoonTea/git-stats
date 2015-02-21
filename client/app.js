@@ -5,6 +5,6 @@ var app = angular.module('gitStats' , [
         $stateProvider
             .state("Home", {
                 url: "/Home",
-                templateUrl: "templates/Home.html"
+                templateUrl: "/client/templates/Home.html"
             })
     });
