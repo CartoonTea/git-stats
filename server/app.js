@@ -3,5 +3,16 @@ var app           = express();
 var path          = require('path');
 var publicFolder  = path.join(__dirname + '/../client');
 
+var port = 3000;
+
+// serve the client folder statically
 app.use('/client', express.static(publicFolder));
-app.listen(3000);
+
+// redirect all other requests to the index file
+app.get('*', function (req, res) {
+  res.sendFile(publicFolder + '/index.html');
+});
+
+// set server listenin
+app.listen(port);
+console.log('(ノಠ益ಠ)ノ GIT STATS ROLLIN\' ON PORT ' + port + ' щ(ಠ益ಠщ)');
