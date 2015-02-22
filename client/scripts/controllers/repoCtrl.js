@@ -6,34 +6,38 @@ gitStats.controller('repoCtrl', function($localStorage){
 
     var issues = $localStorage.TOUTES;
 
+// Load the Visualization API and the piechart package.
+    google.load('visualization', '1.0', {'packages':['corechart']});
 
-    var data = {
-        labels: ["Time", "February", "March", "April", "May", "June", "July"],
-        datasets: [
-            {
-                label: "My First dataset",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: issues
-            }
-            //{
-            //    label: "My Second dataset",
-            //    fillColor: "rgba(151,187,205,0.2)",
-            //    strokeColor: "rgba(151,187,205,1)",
-            //    pointColor: "rgba(151,187,205,1)",
-            //    pointStrokeColor: "#fff",
-            //    pointHighlightFill: "#fff",
-            //    pointHighlightStroke: "rgba(151,187,205,1)",
-            //    data: [28, 48, 40, 19, 86, 27, 90]
-            //}
-        ]
-    };
-    var ctx = document.getElementById("myChart").getContext("2d");
-    var myNewChart = new Chart(ctx).Line(data);
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.setOnLoadCallback(drawChart);
+
+    // Callback that creates and populates a data table,
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+    function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'Time');
+        data.addColumn('number', 'Value');
+        data.addRows([
+            ['Mushrooms', 3],
+            ['Onions', 1],
+            ['Olives', 1],
+            ['Zucchini', 1],
+            ['Pepperoni', 2]
+        ]);
+
+        // Set chart options
+        var options = {'title':'Repository Stats',
+            'width':400,
+            'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
 
 });
 
