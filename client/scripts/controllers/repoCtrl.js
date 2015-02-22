@@ -4,13 +4,15 @@
 
 gitStats.controller('repoCtrl', function($localStorage){
 
-    //var issues = $localStorage.TOUTES;
-    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-Load the Visualization API and the piechart package.
+  document.addEventListener("DOMContentLoaded", function () 
+    google.setOnLoadCallback(drawChart);{
     google.load('visualization', '1.0', {'packages':['corechart']});
 
     // Set a callback to run when the Google Visualization API is loaded.
-    google.setOnLoadCallback(drawChart);
+  });
+    //var issues = $localStorage.TOUTES;
+
+// Load the Visualization API and the piechart package.
 
     // Callback that creates and populates a data table,
     // instantiates the pie chart, passes in the data and
@@ -35,7 +37,7 @@ Load the Visualization API and the piechart package.
             'height':300};
 
         // Instantiate and draw our chart, passing in some options.
-
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
         chart.draw(data, options);
     }
 
