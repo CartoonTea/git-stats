@@ -8,13 +8,15 @@ module.exports = function (params, callback) {
     repos = repos.concat(data);
     client.me().orgs(function (err, data, headers) {
       if (err) { return callback(err); }
-      _.forEach(data, function (org) {
+      async.each(data, function (org, done) {
         client.org(org.login).repos(function (err, data, headers) {
           if (err) { return callback(err); }
           repos = repos.concat(data);
-          console.log('here');
-          callback(null, repos);
+          done();
         });
+      }, function (err) {
+        if (err) { return callback(err); }
+        callback(null, repos);
       });
     });
   });
