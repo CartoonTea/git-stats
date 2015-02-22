@@ -4,9 +4,9 @@
 
 gitStats.controller('repoCtrl', function($localStorage){
 
-  document.addEventListener("DOMContentLoaded", function () 
-    google.setOnLoadCallback(drawChart);{
-    google.load('visualization', '1.0', {'packages':['corechart']});
+  $(function () {
+    google.load('visualization', '1', {'packages':['corechart'], 'callback': drawChart });
+    // google.setOnLoadCallback(drawChart);
 
     // Set a callback to run when the Google Visualization API is loaded.
   });
@@ -19,9 +19,10 @@ gitStats.controller('repoCtrl', function($localStorage){
     // draws it.
     function drawChart() {
 
+
         // Create the data table.
         var data = new google.visualization.DataTable();
-        data.addColumn('number', 'Time');
+        data.addColumn('string', 'Time');
         data.addColumn('number', 'Value');
         data.addRows([
             ['Mushrooms', 3],

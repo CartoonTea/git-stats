@@ -64,6 +64,7 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
         $http.post('api/repos/'+$scope.a+'/'+$scope.b+'/groups' ,{name :x}).
             success(function(data,status){
             console.log(status);
+            if (! $scope.glabels) { $scope.glabels = []; }
             $scope.glabels.push(data);
             $scope.newGroupLabel=""
         }).
