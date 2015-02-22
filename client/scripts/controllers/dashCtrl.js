@@ -21,6 +21,7 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
             console.log(status);
             $scope.glabels =data;
             console.log($scope.glabels);
+            //$localStorage.groupLabelID = $scope.glabels.id;
         }).
         error(function(data,status){
             console.log(status);
@@ -36,6 +37,21 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
             error(function(data,status){
             console.log(status);
         })
+    };
+
+    //DELETE GROUP LABEL
+
+    $scope.deleteGroupLabel = function (a){
+        //var groupID= $localStorage.glabels.id;
+        $http.delete('api/groups/'+a).
+            success(function(data,status){
+                console.log(status);
+
+            }).
+            error(function(data,status){
+            console.log(status);
+
+            });
     }
 
 
