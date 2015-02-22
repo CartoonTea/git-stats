@@ -1,3 +1,4 @@
 module.exports = {
-  login: require('./login')
+  listRepos:  require('./list-repos'),
+  login:      require('./login')
 };
