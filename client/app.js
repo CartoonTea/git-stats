@@ -15,7 +15,7 @@ gitStats.config((function($stateProvider,$urlRouterProvider,$httpProvider,$locat
             .state('Dashboard', {
                 url: '/Dashboard',
                 templateUrl: '/client/templates/Dashboard.html'
-            })
+            });
 
         $locationProvider.html5Mode(true);
 
