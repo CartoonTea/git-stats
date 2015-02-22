@@ -43,7 +43,7 @@ module.exports = function (callback) {
 
   var Label = sequelize.define('Label',{
       url: Sequelize.STRING,
-      text:Sequelize.STRING,
+      name:Sequelize.STRING,
       color:Sequelize.STRING
       }, {
     freezeTableName: true 
@@ -65,7 +65,7 @@ module.exports = function (callback) {
   });
 
   var LabelInGroup = sequelize.define('LabelInGroup',{
-      value:Sequelize.STRING
+      value:Sequelize.FLOAT
       }, {
     freezeTableName: true 
   });
