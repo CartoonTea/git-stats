@@ -18,6 +18,7 @@ global.client = {};  // set up github client after auth
 global._ = require('lodash');
 global.sequelize = {};
 global.models = require('./models');
+global.async = require('async');
 
 
 

@@ -30,6 +30,7 @@ gitStats.controller('homeCtrl', function($scope,$state,$http,$location){
             success(function (data, status, headers, config) {
                 console.log(status);
                 console.log(data);
+                $scope.repos = data;
 
             }).
             error(function (data, status, headers, config) {
