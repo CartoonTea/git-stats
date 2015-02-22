@@ -132,11 +132,12 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
     };
 
     //Chart Stuff
-    // Load the Visualization API and the piechart package.
-    //google.load('visualization', '1.0', {'packages':['corechart']});
+
+        // Load the Visualization API and the piechart package.
+    google.load('visualization', '1.0', {'packages':['corechart']});
 
     // Set a callback to run when the Google Visualization API is loaded.
-    //google.setOnLoadCallback(drawChart);
+    google.setOnLoadCallback(drawChart);
 
     // Callback that creates and populates a data table,
     // instantiates the pie chart, passes in the data and
@@ -164,7 +165,6 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
         var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
         chart.draw(data, options);
     }
-
     //Computation
 
 
