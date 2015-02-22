@@ -6,7 +6,6 @@ var app           = express();
 var path          = require('path');
 var publicFolder  = path.join(__dirname + '/../client');
 var tasks         = require('./tasks');
-var models        = require('./models');
 var port = 3000;
 var helpers;
 
@@ -18,6 +17,7 @@ global.github = require('octonode');
 global.client = {};  // set up github client after auth
 global._ = require('lodash');
 global.sequelize = {};
+global.models = require('./models');
 
 
 
@@ -126,7 +126,6 @@ app.delete('/api/session', function (req, res) {
 app.get('/api/repos', function (req, res) {
   helpers.checkAuth(req, res, function () {
     tasks.listRepos({}, function (err, data) {
-      console.log('controller');
       if (err) { return res.status(500).json(err).end(); }
       res.status(200).json(data).end();
     });
