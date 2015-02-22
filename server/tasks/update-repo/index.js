@@ -74,6 +74,9 @@ module.exports = function (params, callback) {
                   }).catch(function (err) {
                     done(err);
                   });
+                }, function (err) {
+                  if (err) { done(err); }
+                  done();
                 });
               }).catch(function (err) {
                 done(err);

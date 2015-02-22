@@ -1,24 +1,18 @@
 module.exports = function (params, callback) {
   var org = params.org;
   var repo = params.repo;
-  var name = params.name;
-
-  // find the repo
   models.Repository.findOne({
     where: {
       owner: org,
       name: repo
     }
   }).then(function (repo) {
-    if (!repo) { return callback({ error: 'repo not found' }); }
-
-    // find labelgroups
-    models.LabelGroup.findAll({
+    models.Label.findAll({
       where: {
         RepositoryId: repo.id
       }
-    }).then(function (labelGroups) {
-      callback(null, labelGroups);
+    }).then(function (labels) {
+      callback(null, labels);
     }).catch(function (err) {
       callback(err);
     });
