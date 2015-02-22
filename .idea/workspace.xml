@@ -4,6 +4,7 @@
     <list default="true" id="1533e506-1802-4c21-a7d8-dae9fce7d178" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/Repo.html" afterPath="$PROJECT_DIR$/client/templates/Repo.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/scripts/controllers/dashCtrl.js" afterPath="$PROJECT_DIR$/client/scripts/controllers/dashCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="mchacks15.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Repo.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Repo.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/templates/Repo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.69697" vertical-offset="517" max-vertical-offset="1176">
-              <caret line="39" column="59" selection-start-line="39" selection-start-column="59" selection-end-line="39" selection-end-column="59" />
+            <state vertical-scroll-proportion="0.24304268" vertical-offset="637" max-vertical-offset="1512">
+              <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -95,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dashCtrl.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dashCtrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/scripts/controllers/dashCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5034965" vertical-offset="1320" max-vertical-offset="1992">
-              <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="580" max-vertical-offset="1992">
+              <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -129,8 +130,8 @@
         <option value="$PROJECT_DIR$/client/scripts/controllers/repoCtrl.js" />
         <option value="$PROJECT_DIR$/client/templates/Dashboard.html" />
         <option value="$PROJECT_DIR$/client/templates/Home.html" />
-        <option value="$PROJECT_DIR$/client/templates/Repo.html" />
         <option value="$PROJECT_DIR$/client/scripts/controllers/dashCtrl.js" />
+        <option value="$PROJECT_DIR$/client/templates/Repo.html" />
       </list>
     </option>
   </component>
@@ -525,21 +526,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/Repo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.69697" vertical-offset="517" max-vertical-offset="1176">
-          <caret line="39" column="59" selection-start-line="39" selection-start-column="59" selection-end-line="39" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/scripts/controllers/dashCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5034965" vertical-offset="1320" max-vertical-offset="1992">
-          <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="580" max-vertical-offset="1992">
+          <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/Repo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24304268" vertical-offset="637" max-vertical-offset="1512">
+          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>

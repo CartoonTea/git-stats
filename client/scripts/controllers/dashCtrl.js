@@ -37,16 +37,16 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
                 console.log(status);
             });
     });
-    //$http.get('/api/repos/'+a+'/'+b+'/groups').
-    //    success(function(data,status){
-    //        console.log(status);
-    //        console.log(data);
-    //        $scope.glabels =data;
-    //        console.log($scope.glabels);
-    //    }).
-    //    error(function(data,status){
-    //        console.log(status);
-    //    });
+    //GETTING LABELS
+    $http.get('/api/repos/'+a+'/'+b+'/labels').
+        success(function(data,status){
+            console.log(status);
+            console.log(data);
+            $scope.labels =data;
+        }).
+        error(function(data,status){
+            console.log(status);
+        });
 
     //POSTING NEW GROUP LABEL
     $scope.addGroupLabel = function(x){
