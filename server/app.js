@@ -5,11 +5,17 @@ var bodyParser    = require('body-parser');
 var app           = express();
 var path          = require('path');
 var publicFolder  = path.join(__dirname + '/../client');
-var github        = require('octonode');
 var tasks         = require('./tasks');
 var models        = require('./models');
-var repomodels    = require('./models/repository.js');
 var port = 3000;
+
+
+/**
+ * GLOBALS
+ */
+global.github = require('octonode');
+global.client = {};  // set up github client after auth
+global._ = require('lodash');
 
 
 
@@ -26,8 +32,6 @@ if (!githubEnv.id || !githubEnv.secret) {
   process.exit(0);
 }
 github.auth.config(githubEnv);
-global.github = github;
-global.client = {};
 
 /**
  * EXPRESS CONFIGURATION
@@ -60,15 +64,18 @@ app.post('/api/session', function (req, res) {
   var errors;
   req.checkBody('code', 'code parameter is missing').notEmpty();
   errors = req.validationErrors();
-  if (errors) { return res.status(400).json(errors).end(); }
-  tasks.login({ code: req.params.code }, function (err, data) {
-    if (err) { return res.status(500).json(err).end(); }
+  if (errors) {
+    res.status(400).json(errors).end(); 
+    return;
+  }
+  tasks.login({ code: req.body.code }, function (err, data) {
+    if (err) { 
+      res.status(400).send(err.toString());
+      return;
+    }
     req.session.email = data.email;
     req.session.token = data.token;
-    res.status(200).json({
-      email: req.session.email,
-      token: req.session.token
-    }).end();
+    res.status(200).json(data).end();
   });
 });
 

@@ -1,22 +1,20 @@
 var gitStats = angular.module('gitStats' , [
     'ui.router'
 ]);
-gitStats.config((function($stateProvider,$urlRouterProvider){
+gitStats.config((function($stateProvider,$urlRouterProvider,$httpProvider) {
 
         $urlRouterProvider.otherwise('/Home');
+        $httpProvider.defaults.useXDomain = true;
         $stateProvider
 
             .state('Home', {
                 url: '/Home',
-                templateUrl: 'templates/Home.html',
+                templateUrl: '/client/templates/Home.html',
                 controller:'homeCtrl'
             })
             .state('Dashboard', {
                 url: '/Dashboard',
-                templateUrl: 'templates/Dashboard.html'
-            });
-
-            //$locationProvider.html5Mode(true);
-
+                templateUrl: '/client/templates/Dashboard.html'
+            })
 
     }));
