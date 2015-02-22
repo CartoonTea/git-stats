@@ -114,12 +114,9 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
 
     };
     $scope.setValueC = function(r){
-        $http.update('/api/label-in-group/' + r.id, {"value":r}).
+        $http.put('/api/label-in-group/' + r.id, {"value":r.value}).
             success(function(data,status){
-                console.log(status);
-                $scope.valueLabels.push({
-                    "value":r
-                })
+               
             }).
             error(function(data,status){
                 console.log(status);
