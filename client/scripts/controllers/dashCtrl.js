@@ -5,6 +5,7 @@
 gitStats.controller('dashCtrl', function($scope,$localStorage,logoutServ){
     $scope.repos= $localStorage.myRepos;
     console.log($scope.repos);
+
     $scope.logout = function(){
         logoutServ.logoutUser()
     }

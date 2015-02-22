@@ -11,7 +11,10 @@ gitStats.config((function($stateProvider,$urlRouterProvider,$httpProvider,$locat
             .state('Home', {
                 url: '/Home',
                 templateUrl: '/client/templates/Home.html',
-                controller:'homeCtrl'
+                controller:'homeCtrl',
+                data: {
+                    requireLogin: false
+                }
             })
             //.state('Repo', {
             //    url: '/Repo/:RepoName',
@@ -22,9 +25,19 @@ gitStats.config((function($stateProvider,$urlRouterProvider,$httpProvider,$locat
                 url: '/Dashboard',
                 templateUrl: '/client/templates/Dashboard.html',
                 controller:'dashCtrl',
-                authenticate: true
+                data: {
+                    requireLogin: true
+                }
             });
 
         $locationProvider.html5Mode(true);
 
     }));
+gitStats.run(function ($rootScope,$state) {
+    $rootScope.$on('$stateChangeStart', function (event,toState){
+        var requireLogin = toState.data.requireLogin;
+        if (requireLogin && !$rootScope.currentUser){
+            $state.go('Home');
+        }
+    });
+});
