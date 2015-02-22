@@ -2,8 +2,13 @@
 var Sequelize = require('sequelize');
 
 sequelize = new Sequelize('dfpopfrfn1j5rj', 'nnznipgqreabcm', '_BS9rsTBcv3qUfkRwe3rescmR3', {
-  host: 'ec2-23-21-94-137.compute-1.amazonaws.com:5432',
+  host: 'ec2-23-21-94-137.compute-1.amazonaws.com',
+  port: '5432',
   dialect: 'postgres',
+  protocol: 'postgres',
+  dialectOptions: {
+    ssl: true
+  },
   pool: {
     max: 5,
     min: 0,
@@ -59,6 +64,28 @@ var LabelInGroup = sequelize.define('LabelInGroup',{
   freezeTableName: true 
 });
 
+var out
+
+function setOut(){
+    out = {
+  Repository: Repository,
+  Issue: Issue,
+  Label: Label,
+  LabelGroup: LabelGroup,
+  LabelInGroup: LabelInGroup,
+  User: User
+};
+}
+
+setOut();
+
+//sync models with db
+for(var m in out){
+    if (out[m].sync) {
+        out[m].sync();
+    }
+}
+
 //Specify Relations/Associations between models
 Repository.hasMany(Issue,{as:'issues'});
 Issue.hasMany(Label,{as:'labels'});
@@ -67,13 +94,11 @@ Repository.hasMany(LabelGroup,{as:'labelgroups'});
 Label.hasMany(LabelInGroup,{as:'values'});
 LabelGroup.hasMany(LabelInGroup,{as:'values'});
 
-module.exports = {
-  Repository: Repository,
-  Issue: Issue,
-  Label: Label,
-  LabelGroup: LabelGroup,
-  LabelInGroup: LabelInGroup,
-  User: User
-};
+setOut();
+
+module.exports = out;
+
+
+
 
 
