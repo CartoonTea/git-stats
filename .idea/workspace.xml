@@ -33,21 +33,29 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="1272">
               <caret line="31" column="36" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="36" />
-              <folding>
-                <marker date="1424585144192" expanded="true" signature="175:1136" placeholder="{...}" />
-                <marker date="1424585144192" expanded="true" signature="852:1083" placeholder="{&quot;url&quot;: '/{Org}/{Repo}'...}" />
-                <marker date="1424585144192" expanded="true" signature="1182:1408" placeholder="{...}" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Repo.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Repo.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/templates/Repo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24304268" vertical-offset="637" max-vertical-offset="1512">
-              <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+            <state vertical-scroll-proportion="-1.9558823" vertical-offset="35" max-vertical-offset="1536">
+              <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="logoutServ.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/scripts/services/logoutServ.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="528">
+              <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#42#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -88,7 +96,7 @@
         <entry file="file://$PROJECT_DIR$/client/scripts/controllers/repoCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="936">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <caret line="4" column="81" selection-start-line="4" selection-start-column="81" selection-end-line="4" selection-end-column="81" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -96,11 +104,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dashCtrl.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dashCtrl.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/scripts/controllers/dashCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="580" max-vertical-offset="1992">
-              <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+            <state vertical-scroll-proportion="-0.5104895" vertical-offset="1420" max-vertical-offset="1992">
+              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -127,11 +135,11 @@
         <option value="$PROJECT_DIR$/client/app.js" />
         <option value="$PROJECT_DIR$/client/assests/style.less" />
         <option value="$PROJECT_DIR$/client/scripts/services/logoutServ.js" />
-        <option value="$PROJECT_DIR$/client/scripts/controllers/repoCtrl.js" />
         <option value="$PROJECT_DIR$/client/templates/Dashboard.html" />
         <option value="$PROJECT_DIR$/client/templates/Home.html" />
-        <option value="$PROJECT_DIR$/client/scripts/controllers/dashCtrl.js" />
         <option value="$PROJECT_DIR$/client/templates/Repo.html" />
+        <option value="$PROJECT_DIR$/client/scripts/controllers/repoCtrl.js" />
+        <option value="$PROJECT_DIR$/client/scripts/controllers/dashCtrl.js" />
       </list>
     </option>
   </component>
@@ -476,28 +484,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/scripts/services/logoutServ.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="528">
-          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="1272">
-          <caret line="31" column="36" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="36" />
-          <folding>
-            <marker date="1424585144192" expanded="true" signature="175:1136" placeholder="{...}" />
-            <marker date="1424585144192" expanded="true" signature="852:1083" placeholder="{&quot;url&quot;: '/{Org}/{Repo}'...}" />
-            <marker date="1424585144192" expanded="true" signature="1182:1408" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/Home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.818182" vertical-offset="240" max-vertical-offset="1632">
@@ -516,20 +502,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/scripts/controllers/repoCtrl.js">
+    <entry file="file://$PROJECT_DIR$/client/scripts/services/logoutServ.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="936">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/scripts/controllers/dashCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="580" max-vertical-offset="1992">
-          <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="528">
+          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>
@@ -538,9 +514,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/Repo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24304268" vertical-offset="637" max-vertical-offset="1512">
-          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+        <state vertical-scroll-proportion="-1.9558823" vertical-offset="35" max-vertical-offset="1536">
+          <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="1272">
+          <caret line="31" column="36" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/scripts/controllers/repoCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="936">
+          <caret line="4" column="81" selection-start-line="4" selection-start-column="81" selection-end-line="4" selection-end-column="81" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/scripts/controllers/dashCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.5104895" vertical-offset="1420" max-vertical-offset="1992">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

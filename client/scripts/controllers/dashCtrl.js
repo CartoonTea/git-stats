@@ -11,11 +11,11 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
         $localStorage.name =b;
         $state.go('Repo', { Org:a, Repo:b});
     };
-    var a =  $localStorage.org;
-    var b = $localStorage.name;
+    $scope.a =  $localStorage.org;
+    $scope.b = $localStorage.name;
 
     //Getting GROUPS
-    $http.get('/api/repos/'+a+'/'+b).
+    $http.get('/api/repos/'+$scope.a+'/'+$scope.b).
         success(function(data,status){
             console.log(status);
 
@@ -25,7 +25,7 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
         });
 
     $scope.$watch( $scope.newGroupLabel, function(newVal) {
-        $http.get('/api/repos/'+a+'/'+b+'/groups').
+        $http.get('/api/repos/'+$scope.a+'/'+$scope.b+'/groups').
             success(function(data,status){
                 console.log(status);
                 console.log(data);
@@ -38,7 +38,7 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
             });
     });
     //GETTING LABELS
-    $http.get('/api/repos/'+a+'/'+b+'/labels').
+    $http.get('/api/repos/'+$scope.a+'/'+$scope.b+'/labels').
         success(function(data,status){
             console.log(status);
             console.log(data);
