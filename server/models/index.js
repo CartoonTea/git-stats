@@ -2,7 +2,8 @@
 var Sequelize = require('sequelize');
 
 sequelize = new Sequelize('dfpopfrfn1j5rj', 'nnznipgqreabcm', '_BS9rsTBcv3qUfkRwe3rescmR3', {
-  host: 'ec2-23-21-94-137.compute-1.amazonaws.com:5432',
+  host: 'ec2-23-21-94-137.compute-1.amazonaws.com',
+  port: '5432',
   dialect: 'postgres',
   pool: {
     max: 5,
