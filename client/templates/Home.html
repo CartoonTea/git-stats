@@ -1,38 +1,22 @@
-<nav class="navbar navbar-inverse navbar-static-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><b>GitStats</b></a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#"><b>Home</b></a></li>
-                <!--<li><a href="#">Dashboard</a></li>-->
-                <!--<li><a href="#">Link</a></li>-->
-                <!--<li><a href="#">Link</a></li>-->
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
+<div class="centroidme">
+  <i id="gitLoginPrivate" class="fa fa-github fa-5x"></i>
+  <div>
+    <div><a href="{{redirectPrivatePath}}">Authenticate public repositories</a></div>
+    <div><a href="{{redirectPublicPath}}">Authenticate all repositories</a></div>
+  </div>
+</div>
 <div class="row">
     <div class="container-fluid loginBox">
-        <h1><b>GitStats</b></h1>
-        <div class="row container col-md-2" style="top:40px">
+
+        <!--     <a href={{redirectPublicPath}} ></a>
+        <div class="row container col-md-2" style="top:40px; text-align: center;">
             <h2><label class="label-default">Private Auth</label></h2>
             <a href={{redirectPrivatePath}} ><i id="gitLoginPublic"  class="fa fa-github fa-5x"></i></a>
         </div>
-        <div class="row container col-md-2" style="top:40px">
+        <div class="row container col-md-2" style="top:40px; text-align: center;">
            <h2><label class="label-default">Public Auth</label></h2>
-            <a href={{redirectPublicPath}} ><i id="gitLoginPrivate" class="fa fa-github fa-5x"></i></a>
-        </div>
+        </div> -->
     </div>
 
     <!-- Modal -->
