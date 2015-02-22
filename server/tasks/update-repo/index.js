@@ -29,7 +29,6 @@ module.exports = function (params, callback) {
         }).spread(function (label, created) {
           label.set('name', labelData.name);
           label.set('color', labelData.color);
-          label.set('text', labelData.text);
           label.setRepository(repo);
           label.save().then(function (label) {
             done();

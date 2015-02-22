@@ -43,7 +43,7 @@ module.exports = function (callback) {
 
   var Label = sequelize.define('Label',{
       url: Sequelize.STRING,
-      text:Sequelize.STRING,
+      name:Sequelize.STRING,
       color:Sequelize.STRING
       }, {
     freezeTableName: true 
