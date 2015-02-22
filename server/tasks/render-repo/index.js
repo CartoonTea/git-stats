@@ -52,7 +52,6 @@ module.exports = function (params, callback) {
           }, function (err) {
             if (err) { return done(err); }
             issues.push(issue);
-            console.log(JSON.stringify(issues).red);
             done();
           });
         }).catch(function (err) {

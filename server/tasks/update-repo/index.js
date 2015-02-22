@@ -18,7 +18,6 @@ module.exports = function (params, callback) {
     // get labels
     repoClient.labels(function (err, data, headers) {
       if (err) { return callback(err); }
-      console.log('here'.green);
       async.each(data, function (labelData, done) {
 
         // find or create label
