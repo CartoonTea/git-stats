@@ -1,13 +1,13 @@
 <div class="row">
-    <div class="container loginBox">
+    <div class="container-fluid loginBox">
         <h1>GitStats</h1>
         <div class="row container col-md-2 private">
-            <label>Private Auth</label>
+            <label class="label-default">Private Auth</label>
             <a href={{redirectPrivatePath}} ><i id="gitLoginPublic"  class="fa fa-github fa-5x"></i></a>
         </div>
         <div class="row container col-md-2 public">
-            <label>Public Auth</label>
-            <a ref={{redirectPublicPath}} ><i id="gitLoginPrivate" h class="fa fa-github fa-5x"></i></a>
+            <label class="label-default">Public Auth</label>
+            <a href={{redirectPublicPath}} ><i id="gitLoginPrivate" class="fa fa-github fa-5x"></i></a>
         </div>
     </div>
 
