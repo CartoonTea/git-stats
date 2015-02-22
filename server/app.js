@@ -117,7 +117,7 @@ app.get('/api/session', function (req, res) {
 
 // destroys a session
 app.delete('/api/session', function (req, res) {
-  req.session.regenerate(function (err) {
+  req.session.destroy(function (err) {
     if (err) {
       res.status(500).end();
     }
@@ -239,6 +239,8 @@ app.delete('/api/groups/:groupId/labels/:labelId', function (req, res) {
     });
   });
 });
+
+// add view
 
 // redirect all other requests to the index file
 app.get('*', function (req, res) {
