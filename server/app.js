@@ -53,7 +53,6 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use(function (req, res, next) {
-
   if (req.session.token) {
     client = github.client(req.session.token);
   }
@@ -211,7 +210,7 @@ app.post('/api/groups/:id/labels', function (req, res) {
       value: req.body.value
     }, function (err, data) {
       if (err) { return res.status(500).json(err).end(); }
-      res.status(201).end();
+      res.status(201).json(data).end();
     });
   });
 });
