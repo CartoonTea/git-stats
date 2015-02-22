@@ -221,6 +221,19 @@ app.post('/api/groups/:id/labels', function (req, res) {
   });
 });
 
+// update label for group
+app.put('/api/label-in-group/:id', function (req, res) {
+  helpers.checkAuth(req, res, function () {
+    tasks.updateLabel({
+      id: req.params.id,
+      value: req.body.value
+    }, function (err, data) {
+      if (err) { return res.status(500).json(err).end(); }
+      res.status(200).json(data).end();
+    });
+  });
+});
+
 // get labels from group
 app.get('/api/groups/:id/labels', function (req, res) {
   helpers.checkAuth(req, res, function () {

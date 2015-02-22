@@ -12,5 +12,6 @@ module.exports = {
   listRepos:        require('./list-repos'),
   login:            require('./login'),
   renderRepo:       require('./render-repo'),
+  updateLabel:      require('./update-label'),
   updateRepo:       require('./update-repo')
 };
