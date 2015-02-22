@@ -47,7 +47,9 @@ var Label = sequelize.define('Label',{
 
 var User = sequelize.define('User',{
     email:Sequelize.STRING,
-    oauthtoken:{type:Sequelize.STRING,field:'oauth_token'}
+    oauthtoken: {
+      type: Sequelize.STRING,
+      field: 'oauth_token'}
     }, {
   freezeTableName: true 
 });

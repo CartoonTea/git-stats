@@ -18,24 +18,21 @@ module.exports = function (data, callback) {
         return;
       }
       
-      
-      
       userEmail = _.where(data, { primary: true })[0].email;
-      
       models.User.findOrCreate({
-        where:{email:userEmail}
-        }).spread(function(instance,created){
-        
-            user=instance;
-            user.set('oauth_token',token);
-           
-            callback(null, user);
-            
-        }).catch(function(err){
+        where: {
+          email: userEmail
+        }
+      }).spread(function(instance, created) {
+        instance.set('oauthtoken', token);
+        instance.save().then(function (saved) {
+          callback(null, instance);
+        }).catch(function (err) {
           callback(err);
         });
-      
-
+      }).catch(function(err){
+        callback(err);
+      });
     });
   });
 };

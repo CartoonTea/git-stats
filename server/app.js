@@ -6,6 +6,7 @@ var app           = express();
 var path          = require('path');
 var publicFolder  = path.join(__dirname + '/../client');
 var tasks         = require('./tasks');
+var colors        = require('colors');
 var port = 3000;
 var helpers;
 
@@ -48,7 +49,7 @@ app.use(bodyParser.json());
 app.use(validator());
 app.use(session({
   secret: 'blender dem webz eh',
-  resave: false,
+  resave: true,
   saveUninitialized: true
 }));
 app.use(function (req, res, next) {
@@ -67,6 +68,7 @@ helpers = {
 
   // validates a users auth
   checkAuth: function (req, res, callback) {
+    console.log(JSON.stringify(req.session).red);
     if (!req.session.token) {
       return res.status(400).json({error: 'not logged in'}).end();
     }
@@ -96,26 +98,24 @@ app.post('/api/session', function (req, res) {
       return;
     }
     req.session.email = data.email;
-    req.session.token = data.token;
-    res.status(200).json(data).end();
+    req.session.token = data.oauthtoken;
+    res.status(200).json(data.toJSON()).end();
   });
 });
 
 // gets a session
 app.get('/api/session', function (req, res) {
-  if (!req.session.email || !req.session.token) {
-    return res.status(400).json({ error: 'not logged in' }).end();
-  }
-
-  res.status(200).json({
-    email: req.session.email,
-    token: req.session.token
-  }).end();
+  helpers.checkAuth(req, res, function () {
+    res.status(200).json({
+      email: req.session.email,
+      token: req.session.token
+    }).end();
+  });
 });
 
 // destroys a session
 app.delete('/api/session', function (req, res) {
-  req.session.destroy(function (err) {
+  req.session.regenerate(function (err) {
     if (err) {
       res.status(500).end();
     }
@@ -146,4 +146,5 @@ app.get('*', function (req, res) {
 
 // set server listenin
 app.listen(port);
-console.log('(ノಠ益ಠ)ノ GIT STATS ROLLIN\' ON PORT ' + port + ' щ(ಠ益ಠщ)');
+var listenString = '(ノಠ益ಠ)ノ GIT STATS ROLLIN\' ON PORT ' + port + ' щ(ಠ益ಠщ)'
+console.log(listenString.rainbow);
