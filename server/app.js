@@ -177,6 +177,18 @@ app.get('/api/repos/:org/:repo/groups', function (req, res) {
   });
 });
 
+// deletes a label group
+app.delete('/api/groups/:id', function (req, res) {
+  helpers.checkAuth(req, res, function () {
+    tasks.deleteLabelGroup({
+      id: req.params.id
+    }, function (err, data) {
+      if (err) { return res.status(500).json(err).end(); }
+      res.status(204).end();
+    });
+  });
+});
+
 // redirect all other requests to the index file
 app.get('*', function (req, res) {
   res.sendFile(publicFolder + '/index.html');
