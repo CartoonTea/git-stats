@@ -5,7 +5,6 @@ var bodyParser    = require('body-parser');
 var app           = express();
 var path          = require('path');
 var publicFolder  = path.join(__dirname + '/../client');
-var tasks         = require('./tasks');
 var colors        = require('colors');
 var port = 3000;
 var helpers;
@@ -18,7 +17,8 @@ global.github = require('octonode');
 global.client = {};  // set up github client after auth
 global._ = require('lodash');
 global.sequelize = {};
-global.models = require('./models');
+global.models = require('./models')();
+global.tasks = require('./tasks');
 global.async = require('async');
 
 
@@ -53,6 +53,8 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use(function (req, res, next) {
+    // req.session.token = '721567fa73148aea5f7a07822ddab720319e39c7';
+    // req.session.email = 'connor.bode@gmail.com';
   if (req.session.token) {
     client = github.client(req.session.token);
   }
@@ -68,10 +70,11 @@ helpers = {
 
   // validates a users auth
   checkAuth: function (req, res, callback) {
-    console.log(JSON.stringify(req.session).red);
     if (!req.session.token) {
       return res.status(400).json({error: 'not logged in'}).end();
+      callback();
     }
+    console.log(JSON.stringify(req.session).red);
     callback();
   }
 
@@ -129,6 +132,59 @@ app.get('/api/repos', function (req, res) {
     tasks.listRepos({}, function (err, data) {
       if (err) { return res.status(500).json(err).end(); }
       res.status(200).json(data).end();
+    });
+  });
+});
+
+// retrieves a repo
+app.get('/api/repos/:org/:repo', function (req, res) {
+  helpers.checkAuth(req, res, function () {
+    tasks.updateRepo({
+      owner: req.params.org,
+      name: req.params.repo
+    }, function (err, data) {
+      if (err) { return res.status(500).json(err).end(); }
+      res.status(200).json(data).end();
+    });
+  });
+});
+
+// creates a label group for a repo
+app.post('/api/repos/:org/:repo/groups', function (req, res) {
+  helpers.checkAuth(req, res, function () {
+    console.log(JSON.stringify(req.body).red);
+    tasks.addRepoGroup({
+      org: req.params.org,
+      repo: req.params.repo,
+      name: req.body.name
+    }, function (err, data) {
+      if (err) { return res.status(500).json(err).end(); }
+      res.status(201).json(data).end();
+    });
+  });
+});
+
+// retrieves label groups for a repo
+app.get('/api/repos/:org/:repo/groups', function (req, res) {
+  helpers.checkAuth(req, res, function () {
+    tasks.getRepoGroups({
+      org: req.params.org,
+      repo: req.params.repo
+    }, function (err, data) {
+      if (err) { return res.status(500).json(err).end(); }
+      res.status(200).json(data).end();
+    });
+  });
+});
+
+// deletes a label group
+app.delete('/api/groups/:id', function (req, res) {
+  helpers.checkAuth(req, res, function () {
+    tasks.deleteLabelGroup({
+      id: req.params.id
+    }, function (err, data) {
+      if (err) { return res.status(500).json(err).end(); }
+      res.status(204).end();
     });
   });
 });
