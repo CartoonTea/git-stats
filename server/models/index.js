@@ -65,7 +65,7 @@ module.exports = function (callback) {
   });
 
   var LabelInGroup = sequelize.define('LabelInGroup',{
-      value:Sequelize.FLOAT
+      value:Sequelize.STRING
       }, {
     freezeTableName: true 
   });
@@ -89,6 +89,8 @@ module.exports = function (callback) {
   LabelGroup.belongsTo(Repository);
   Issue.belongsTo(Repository);
   Issue.hasMany(Label);
+  Label.hasMany(LabelInGroup);
+  LabelGroup.hasMany(LabelInGroup);
 
   sequelize.sync();
 

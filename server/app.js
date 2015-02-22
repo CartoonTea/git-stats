@@ -69,6 +69,7 @@ helpers = {
 
   // validates a users auth
   checkAuth: function (req, res, callback) {
+
     if (!req.session.token) {
       return res.status(400).json({error: 'not logged in'}).end();
       callback();
@@ -176,6 +177,19 @@ app.get('/api/repos/:org/:repo/groups', function (req, res) {
   });
 });
 
+// retrieves labels for a repo
+app.get('/api/repos/:org/:repo/labels', function (req, res) {
+  helpers.checkAuth(req, res, function () {
+    tasks.getLabelsByRepo({
+      org: req.params.org,
+      repo: req.params.repo
+    }, function (err, data) {
+      if (err) { return res.status(500).json(err).end(); }
+      res.status(200).json(data).end();
+    });
+  });
+});
+
 // deletes a label group
 app.delete('/api/groups/:id', function (req, res) {
   helpers.checkAuth(req, res, function () {
@@ -184,6 +198,20 @@ app.delete('/api/groups/:id', function (req, res) {
     }, function (err, data) {
       if (err) { return res.status(500).json(err).end(); }
       res.status(204).end();
+    });
+  });
+});
+
+// add label to group
+app.post('/api/groups/:id/labels', function (req, res) {
+  helpers.checkAuth(req, res, function () {
+    tasks.addLabelToGroup({
+      groupId: req.params.id,
+      labelId: req.body.label,
+      value: req.body.value
+    }, function (err, data) {
+      if (err) { return res.status(500).json(err).end(); }
+      res.status(201).end();
     });
   });
 });
