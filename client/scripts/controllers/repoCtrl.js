@@ -5,7 +5,7 @@
 gitStats.controller('repoCtrl', function($localStorage){
 
     var issues = $localStorage.TOUTES;
-    
+
 
     var data = {
         labels: ["Time", "February", "March", "April", "May", "June", "July"],

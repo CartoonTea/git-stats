@@ -3,8 +3,6 @@
  */
 
 gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$state,$http,logout){
-
-
     $scope.repos= $localStorage.myRepos;
     console.log($scope.repos);
 
@@ -16,50 +14,58 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
     $scope.a =  $localStorage.org;
     $scope.b = $localStorage.name;
 
-    //Getting GROUPS
-    $http.get('/api/repos/'+$scope.a+'/'+$scope.b).
-        success(function(data,status){
-            console.log(status);
-            $scope.TOUT= data;
-            $localStorage.TOUTES = $scope.TOUT;
-        }).
-        error(function(data,status){
-            console.log(status);
-        });
 
+    //GET REPOS
+    $http.get('/api/repos').
+        success(function (data, status, headers, config) {
+            console.log(status);
+            console.log(data);
+            $scope.repos = data;
+            $localStorage.myRepos = $scope.repos;
 
-        $http.get('/api/repos/'+$scope.a+'/'+$scope.b+'/groups').
+        //Getting GROUPS
+        $http.get('/api/repos/'+$scope.a+'/'+$scope.b).
             success(function(data,status){
                 console.log(status);
-                console.log(data);
-                $scope.glabels =data;
-                console.log($scope.glabels);
-
+                $scope.TOUT= data;
+                $localStorage.TOUTES = $scope.TOUT;
             }).
             error(function(data,status){
                 console.log(status);
             });
 
-    //GETTING LABELS
-    $http.get('/api/repos/'+$scope.a+'/'+$scope.b+'/labels').
-        success(function(data,status){
-            console.log(status);
-            console.log(data);
-            $scope.labels =data;
-        }).
-        error(function(data,status){
-            console.log(status);
-        });
+
+            $http.get('/api/repos/'+$scope.a+'/'+$scope.b+'/groups').
+                success(function(data,status){
+                    console.log(status);
+                    console.log(data);
+                    $scope.glabels =data;
+                    console.log($scope.glabels);
+
+                }).
+                error(function(data,status){
+                    console.log(status);
+                });
+
+        //GETTING LABELS
+        $http.get('/api/repos/'+$scope.a+'/'+$scope.b+'/labels').
+            success(function(data,status){
+                console.log(status);
+                console.log(data);
+                $scope.labels =data;
+            }).
+            error(function(data,status){
+                console.log(status);
+            });
+    });
 
     //POSTING NEW GROUP LABEL
     $scope.addGroupLabel = function(x){
         $http.post('api/repos/'+$scope.a+'/'+$scope.b+'/groups' ,{name :x}).
             success(function(data,status){
             console.log(status);
-            $scope.glabels.push({
-                name: x
-            });
-                $scope.newGroupLabel=""
+            $scope.glabels.push(data);
+            $scope.newGroupLabel=""
         }).
             error(function(data,status){
             console.log(status);
@@ -129,51 +135,6 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
         $scope.currentUser=undefined;
         logout.logoutUser();
     };
-
-
-
-    //Chart Stuff
-
-    // Get the context of the canvas element we want to select
-
-
-
-
-
-    //
-    //    // Load the Visualization API and the piechart package.
-    //google.load('visualization', '1.0', {'packages':['corechart']});
-    //
-    //// Set a callback to run when the Google Visualization API is loaded.
-    //google.setOnLoadCallback(drawChart);
-    //
-    //// Callback that creates and populates a data table,
-    //// instantiates the pie chart, passes in the data and
-    //// draws it.
-    //function drawChart() {
-    //
-    //    // Create the data table.
-    //    var data = new google.visualization.DataTable();
-    //    data.addColumn('number', 'Time');
-    //    data.addColumn('number', 'Value');
-    //    data.addRows([
-    //        //['Mushrooms', 3],
-    //        //['Onions', 1],
-    //        //['Olives', 1],
-    //        //['Zucchini', 1],
-    //        //['Pepperoni', 2]
-    //    ]);
-    //
-    //    // Set chart options
-    //    var options = {'title':'GitStats',
-    //        'width':400,
-    //        'height':300};
-    //
-    //    // Instantiate and draw our chart, passing in some options.
-    //    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-    //    chart.draw(data, options);
-    //}
-    //Computation
 
 
 
