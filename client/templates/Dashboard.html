@@ -8,10 +8,10 @@
                 <th>Owner</th>
                 <th>Issues#</th>
             </tr>
-            <tr ng-repeat>
-                <th>{{}}</th>
-                <th>{{}}</th>
-                <th>{{}}</th>
+            <tr ng-repeat="repo in repos">
+                <th><img class="img-rounded" src={{repo.owner.avatar_url}}>{{repo.name}}</th>
+                <th>{{repo.owner.login}}</th>
+                <th>{{repo.open_issues}}</th>
             </tr>
         </table>
     </div>
