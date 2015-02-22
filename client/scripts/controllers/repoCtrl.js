@@ -5,8 +5,8 @@
 gitStats.controller('repoCtrl', function($localStorage){
 
     //var issues = $localStorage.TOUTES;
-
-// Load the Visualization API and the piechart package.
+    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+Load the Visualization API and the piechart package.
     google.load('visualization', '1.0', {'packages':['corechart']});
 
     // Set a callback to run when the Google Visualization API is loaded.
@@ -35,7 +35,7 @@ gitStats.controller('repoCtrl', function($localStorage){
             'height':300};
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
         chart.draw(data, options);
     }
 
