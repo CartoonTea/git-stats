@@ -1,5 +1,22 @@
 <div class="row">
     <div class="container-fluid">
+        <div class="container groupLabels">
+            <table id="labelGroups" class="table table-hover">
+                <tr>
+                    <th>Group Labels</th>
+                </tr>
+                <tr>
+                    <th>
+                        <form ng-submit="addGroupLabel()">
+                        <input type="text" ng-model="newGroupLabel" placeholder="New group label" class="form-control">
+                        </form>
+                    </th>
+                </tr>
+                <tr ng-repeat="l in glabels track by $index">
+                    <th>{{l.name}}</th>
+                </tr>
+            </table>
+        </div>
 
     </div>
 

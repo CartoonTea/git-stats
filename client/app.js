@@ -16,17 +16,22 @@ gitStats.config((function($stateProvider,$urlRouterProvider,$httpProvider,$locat
                     requireLogin: false
                 }
             })
-            //.state('Repo', {
-            //    url: '/Repo/:RepoName',
-            //    templateUrl: '/client/templates/Repo.html',
-            //    controller:'RepoCrl'
-            //})
+
             .state('Dashboard', {
                 url: '/Dashboard',
                 templateUrl: '/client/templates/Dashboard.html',
                 controller:'dashCtrl',
                 data: {
                     requireLogin: true
+                }
+            })
+
+            .state('Repo', {
+                url: '/{Org}/{Repo}',
+                templateUrl: '/client/templates/Repo.html',
+                controller:'dashCtrl',
+                data:{
+                    requireLogin:true
                 }
             });
 
