@@ -76,10 +76,10 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
     $scope.deleteGroupLabel = function (a){
         $http.delete('/api/groups/'+a).
             success(function(data,status){
-                console.log(status);
-                console.log($scope.glabels);
-                   $scope.glabels.splice(a,1);
-                    $scope.$apply();
+              _.remove($scope.glabels, function (g) {
+                return g.id === a;
+              });
+              $scope.showing = false;
 
             }).
             error(function(data,status){
