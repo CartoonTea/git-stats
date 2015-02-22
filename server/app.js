@@ -168,8 +168,8 @@ app.post('/api/repos/:org/:repo/groups', function (req, res) {
 app.get('/api/repos/:org/:repo/groups', function (req, res) {
   helpers.checkAuth(req, res, function () {
     tasks.getRepoGroups({
-      owner: req.params.org,
-      name: req.params.repo
+      org: req.params.org,
+      repo: req.params.repo
     }, function (err, data) {
       if (err) { return res.status(500).json(err).end(); }
       res.status(200).json(data).end();

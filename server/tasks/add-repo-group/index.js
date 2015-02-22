@@ -11,6 +11,8 @@ module.exports = function (params, callback) {
     }
   }).then(function (repo) {
     if (!repo) { return callback('repo not found'); }
+
+    // create the label
     models.LabelGroup.create({
       RepositoryId: repo.id,
       name: name
