@@ -146,18 +146,18 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
 
         // Create the data table.
         var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
+        data.addColumn('number', 'Time');
+        data.addColumn('number', 'Value');
         data.addRows([
-            ['Mushrooms', 3],
-            ['Onions', 1],
-            ['Olives', 1],
-            ['Zucchini', 1],
-            ['Pepperoni', 2]
+            //['Mushrooms', 3],
+            //['Onions', 1],
+            //['Olives', 1],
+            //['Zucchini', 1],
+            //['Pepperoni', 2]
         ]);
 
         // Set chart options
-        var options = {'title':'How Much Pizza I Ate Last Night',
+        var options = {'title':'GitStats',
             'width':400,
             'height':300};
 
