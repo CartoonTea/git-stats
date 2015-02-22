@@ -24,19 +24,19 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
             console.log(status);
         });
 
-    $scope.$watch( $scope.newGroupLabel, function(newVal) {
+
         $http.get('/api/repos/'+$scope.a+'/'+$scope.b+'/groups').
             success(function(data,status){
                 console.log(status);
                 console.log(data);
                 $scope.glabels =data;
                 console.log($scope.glabels);
-                $scope.newGroupLabel="";
+
             }).
             error(function(data,status){
                 console.log(status);
             });
-    });
+
     //GETTING LABELS
     $http.get('/api/repos/'+$scope.a+'/'+$scope.b+'/labels').
         success(function(data,status){
@@ -50,10 +50,12 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
 
     //POSTING NEW GROUP LABEL
     $scope.addGroupLabel = function(x){
-        $http.post('api/repos/'+a+'/'+b+'/groups' ,{name :x}).
+        $http.post('api/repos/'+$scope.a+'/'+$scope.b+'/groups' ,{name :x}).
             success(function(data,status){
             console.log(status);
-
+            $scope.glabels.push({
+                name: x
+            })
         }).
             error(function(data,status){
             console.log(status);
@@ -65,15 +67,12 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
         $http.delete('api/groups/'+a).
             success(function(data,status){
                 console.log(status);
+                $scope.glabels.slice(a,1);
             }).
             error(function(data,status){
             console.log(status);
 
             });
-    }
-
-
-
+};
 
 });
-
