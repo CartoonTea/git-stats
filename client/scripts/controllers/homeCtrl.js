@@ -27,18 +27,20 @@ gitStats.controller('homeCtrl', function($scope,$state,$http,$location,$localSto
                 error(function (data, status, headers, config) {
                     console.log(status);
                 });
-        }
-        //GET REPOS
-        $http.get('/api/repos').
-            success(function (data, status, headers, config) {
-                console.log(status);
-                console.log(data);
-                $scope.repos = data;
-                $localStorage.myRepos = $scope.repos;
 
-            }).
-            error(function (data, status, headers, config) {
-                console.log(status);
-            });
+            //GET REPOS
+            $http.get('/api/repos').
+                success(function (data, status, headers, config) {
+                    console.log(status);
+                    console.log(data);
+                    $scope.repos = data;
+                    $localStorage.myRepos = $scope.repos;
+
+                }).
+                error(function (data, status, headers, config) {
+                    console.log(status);
+                });
+        }
+
     });
 });
