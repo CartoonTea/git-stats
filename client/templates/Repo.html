@@ -23,7 +23,7 @@
     </div><!-- /.container-fluid -->
 </nav>
 <div class="row">
-    <div class="container-fluid">
+
         <div class="container groupLabels">
             <table id="labelGroups" class="table table-hover">
                 <tr>
@@ -31,20 +31,14 @@
                 </tr>
                 <tr>
                     <th>
-                        <form ng-submit="addGroupLabel()">
-                            <div class="input-group-addon">
-                                <input type="text" ng-model="newGroupLabel" placeholder="New group label" class="form-control"><i class="fa fa-trash fa-2x"></i>
-                            </div>
+                        <form ng-submit="addGroupLabel(newGroupLabel)">
+                                <input type="text" ng-model="newGroupLabel" placeholder="New group label" class="form-control">
                         </form>
                     </th>
                 </tr>
                 <tr ng-repeat="l in glabels">
-
-                    <th>{{l.name}}<span class="glyphicon glyphicon-trash"></span></th>
+                        <th ng-click="deleteGroupLabel(l.id)">{{l.name}}<i class="fa fa-trash pull-right fa-2x"></i></th>
                 </tr>
             </table>
         </div>
-
-    </div>
-
 </div>
