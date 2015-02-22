@@ -16,6 +16,7 @@ var port = 3000;
 global.github = require('octonode');
 global.client = {};  // set up github client after auth
 global._ = require('lodash');
+global.sequelize = {};
 
 
 

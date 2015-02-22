@@ -1,7 +1,7 @@
 
 var Sequelize = require('sequelize');
 
-var sequelize = new Sequelize('dfpopfrfn1j5rj', 'nnznipgqreabcm', '_BS9rsTBcv3qUfkRwe3rescmR3', {
+sequelize = new Sequelize('dfpopfrfn1j5rj', 'nnznipgqreabcm', '_BS9rsTBcv3qUfkRwe3rescmR3', {
   host: 'ec2-23-21-94-137.compute-1.amazonaws.com:5432',
   dialect: 'postgres',
   pool: {
@@ -67,6 +67,13 @@ Repository.hasMany(LabelGroup,{as:'labelgroups'});
 Label.hasMany(LabelInGroup,{as:'values'});
 LabelGroup.hasMany(LabelInGroup,{as:'values'});
 
-module.exports={Repository:Repository,Issue:Issue,Label:Label,LabelGroup:LabelGroup,LabelInGroup:LabelInGroup,User:User}
+module.exports = {
+  Repository: Repository,
+  Issue: Issue,
+  Label: Label,
+  LabelGroup: LabelGroup,
+  LabelInGroup: LabelInGroup,
+  User: User
+};
 
 
