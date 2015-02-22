@@ -2,7 +2,7 @@
  * Created by Mehdi on 2015-02-21.
  */
 
-gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$state,$http){
+gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$state,$http,logout){
     $scope.repos= $localStorage.myRepos;
     console.log($scope.repos);
 
@@ -89,6 +89,7 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
             console.log($scope.valueLabels);
             $scope.showing = true;
             $scope.container = u;
+            $scope.containerID = y;
         }).
         error(function(data,status){
            console.log(status);
@@ -97,12 +98,12 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
     };
 
     //ADD LABEL TO GROUP.L CONTAINER
-    $scope.addGcontainer = function(o,c){
-        $http.post('/api/groups/'+o+'/labels').
+    $scope.addGcontainer = function(o,c,e){
+        $http.post('/api/groups/'+$scope.containerID+'/labels', {"label":o,"value":c}).
             success(function(data,status){
                 console.log(status);
                 $scope.valueLabels.push({
-                    "name":o,
+                    "label":e,
                     "value":c
                 })
             }).
@@ -111,4 +112,20 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
             });
 
     };
+    $scope.setValueC = function(r){
+        $http.update('', {"value":r}).
+            success(function(data,status){
+                console.log(status);
+                $scope.valueLabels.push({
+                    "value":r
+                })
+            }).
+            error(function(data,status){
+                console.log(status);
+            })
+    };
+
+    $scope.out = function(){
+        logout.logoutUser();
+    }
 });

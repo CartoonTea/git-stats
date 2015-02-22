@@ -8,15 +8,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">GitStats</a>
+            <a class="navbar-brand" href="#"><b>GitStats</b></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">MyRepo</a></li>
-                <li><a ui-sref="Dashboard">Dashboard</a></li>
-                <li ng-click="logoutServ.logoutUser()"><a href="#">LogOut</a></li>
+                <li class="active"><a href="#"><b>MyRepo</b></a></li>
+                <li><a ui-sref="Dashboard"><b>Dashboard</b></a></li>
+                <li ng-click="out()"><a href="#"><b>LogOut</b></a></li>
                 <!--<li><a href="#">Link</a></li>-->
                 <!--<li><a href="#">Link</a></li>-->
             </ul>
@@ -24,23 +24,12 @@
     </div><!-- /.container-fluid -->
 </nav>
 <div class="row">
-    <!--Labels-->
-    <div class="container groupLabels pull-left">
-        <table class="table table-hover">
-            <tr>
-                <th>Labels</th>
-            </tr>
-            <tr ng-repeat="l in labels">
-                <td>{{l.name}}<i class="fa fa-plus fa-2x pull-right" style="cursor:pointer;" ng-click="addGcontainer(l.id,0)"></i></td>
-            </tr>
-        </table>
-    </div>
-    <!--Labels-->
+
     <!--GroupLabels-->
         <div class="container groupLabels pull-left">
             <table id="labelGroups" class="table table-hover">
                 <tr>
-                    <th>Group</th>
+                    <th class="label-success">Group</th>
                 </tr>
                 <tr>
                     <th>
@@ -50,17 +39,29 @@
                     </th>
                 </tr>
                 <tr ng-repeat="l in glabels">
-                        <th style="cursor: pointer;" ng-click="clickGlabel(l.id,l.name)">{{l.name}}<i class="fa fa-trash pull-right fa-2x" style="cursor: pointer"  ng-click="deleteGroupLabel(l.id)"></i></th>
+                        <th popover="Customize Group" popover-trigger="mouseenter" style="cursor: pointer;" ng-click="clickGlabel(l.id,l.name)">{{l.name}}<i class="fa fa-trash pull-right fa-2x" style="cursor: pointer"  ng-click="deleteGroupLabel(l.id)"></i></th>
                 </tr>
             </table>
         </div>
 
     <!--GroupLabels-->
+    <!--Labels-->
+    <div class="container groupLabels pull-left" ng-show="showing">
+        <table class="table table-hover">
+            <tr>
+                <th class="label-warning">Categories</th>
+            </tr>
+            <tr ng-repeat="l in labels">
+                <td>{{l.name}}<i class="fa fa-plus fa-2x pull-right" style="cursor:pointer;" ng-click="addGcontainer(l.id,0,l.name)"></i></td>
+            </tr>
+        </table>
+    </div>
+    <!--Labels-->
     <!--LabelContainer-->
     <div class="container groupLabels pull-left" ng-show="showing">
         <table id="labelGroups" class="table table-hover">
             <tr>
-                <th colspan="2">{{container}} Group</th>
+                <th colspan="2" class="label-danger">{{container}} Group</th>
 
             </tr>
             <tr>
@@ -68,8 +69,12 @@
                     <th>Value</th>
             </tr>
             <tr ng-repeat="v in valueLabels">
-                <th>{{v.name}}</th>
-                <th><input type="number" class="form-control" ng-model="v.value"></th>
+                <th>{{v.label}}</th>
+                <th>
+                    <form role="form" ng-submit="setValueC(v.value)">
+                    <input type="number" class="form-control" ng-model="v.value">
+                    </form>
+                </th>
             </tr>
         </table>
     </div>

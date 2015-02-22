@@ -8,13 +8,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">GitStats</a>
+            <a class="navbar-brand" href="#"><b>GitStats</b></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="#"><b>Home</b></a></li>
                 <!--<li><a href="#">Dashboard</a></li>-->
                 <!--<li><a href="#">Link</a></li>-->
                 <!--<li><a href="#">Link</a></li>-->
@@ -24,13 +24,13 @@
 </nav>
 <div class="row">
     <div class="container-fluid loginBox">
-        <h1>GitStats</h1>
-        <div class="row container col-md-2 private">
-            <label class="label-default">Private Auth</label>
+        <h1><b>GitStats</b></h1>
+        <div class="row container col-md-2" style="top:40px">
+            <h2><label class="label-default">Private Auth</label></h2>
             <a href={{redirectPrivatePath}} ><i id="gitLoginPublic"  class="fa fa-github fa-5x"></i></a>
         </div>
-        <div class="row container col-md-2 public">
-            <label class="label-default">Public Auth</label>
+        <div class="row container col-md-2" style="top:40px">
+           <h2><label class="label-default">Public Auth</label></h2>
             <a href={{redirectPublicPath}} ><i id="gitLoginPrivate" class="fa fa-github fa-5x"></i></a>
         </div>
     </div>

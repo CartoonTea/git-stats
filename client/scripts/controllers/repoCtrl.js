@@ -2,7 +2,7 @@
  * Created by Mehdi on 2015-02-22.
  */
 
-gitStats.controller('repoCtrl', function($scope,$stateParams,$state,$localStorage){
+gitStats.controller('repoCtrl', function($scope,$stateParams,$state,$localStorage,logout){
     var a= $localStorage.org;
     var b= $localStorage.name;
     $scope.repos = $localStorage.myRepos;
@@ -27,6 +27,9 @@ gitStats.controller('repoCtrl', function($scope,$stateParams,$state,$localStorag
             error(function(data,status){
             console.log(status);
         })
+    };
+    $scope.out = function(){
+        logout.logoutUser();
     }
 
 });
