@@ -143,7 +143,13 @@ app.get('/api/repos/:org/:repo', function (req, res) {
       name: req.params.repo
     }, function (err, data) {
       if (err) { return res.status(500).json(err).end(); }
-      res.status(200).json(data).end();
+      tasks.renderRepo({
+        owner: req.params.org,
+        name: req.params.repo
+      }, function (err, data) {
+        if (err) { return res.status(500).json(err).end(); }
+        res.status(200).json(data).end();
+      });
     });
   });
 });
@@ -241,6 +247,55 @@ app.delete('/api/groups/:groupId/labels/:labelId', function (req, res) {
 });
 
 // add view
+app.post('/api/repos/:org/:repo/views', function (req, res) {
+  helpers.checkAuth(req, res, function () {
+    tasks.addViewToRepo({
+      formula: req.body.formula,
+      org: req.params.org,
+      repo: req.params.repo
+    }, function (err, data) {
+      if (err) { return res.status(500).json(err).end(); }
+      res.status(200).json(data).end();
+    });
+  });
+});
+
+// get views
+app.get('/api/repos/:org/:repo/views', function (req, res) {
+  helpers.checkAuth(req, res, function () {
+    tasks.getViewsByRepo({
+      org: req.params.org,
+      repo: req.params.repo
+    }, function (err, data) {
+      if (err) { return res.status(500).json(err).end(); }
+      res.status(200).json(data).end();
+    });
+  });
+});
+
+// delete view
+app.delete('/api/views/:id', function (req, res) {
+  helpers.checkAuth(req, res, function () {
+    tasks.deleteView({
+      id: req.params.id
+    }, function (err, data) {
+      if (err) { return res.status(500).json(err).end(); }
+      res.status(201).json(data).end();
+    });
+  });
+});
+
+// render view
+app.get('/api/views/:id/render', function (req, res) {
+  helpers.checkAuth(req, res, function () {
+    tasks.renderView({
+      id: req.params.id
+    }, function (err, data) {
+      if (err) { return res.status(500).json(err).end(); }
+      res.status(200).json(data).end();
+    });
+  });
+});
 
 // redirect all other requests to the index file
 app.get('*', function (req, res) {

@@ -58,6 +58,7 @@ module.exports = function (params, callback) {
               issue.set('created_at', issueData.created_at);
               issue.set('closed_at', issueData.closed_at);
               issue.set('updated_at', issueData.updated_at);
+              issue.setRepository(repo);
               issue.save().then(function (issue) {
                 async.each(issueData.labels, function (labelData, done) {
                   models.Label.findOne({
@@ -75,7 +76,7 @@ module.exports = function (params, callback) {
                     done(err);
                   });
                 }, function (err) {
-                  if (err) { done(err); }
+                  if (err) { return done(err); }
                   done();
                 });
               }).catch(function (err) {
