@@ -17,7 +17,14 @@ gitStats.config((function($stateProvider,$urlRouterProvider,$httpProvider,$locat
                     requireLogin: false
                 }
             })
-
+            .state('Stats', {
+                url: '/Stats',
+                templateUrl: '/client/templates/Stats.html',
+                controller:'repoCtrl',
+                    data: {
+                        requireLogin: false
+                }
+                })
             .state('Dashboard', {
                 url: '/Dashboard',
                 templateUrl: '/client/templates/Dashboard.html',

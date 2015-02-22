@@ -2,38 +2,38 @@
  * Created by Mehdi on 2015-02-22.
  */
 
-gitStats.controller('repoCtrl', function($scope,$stateParams,$state,$localStorage,logout){
-    var a= $localStorage.org;
-    var b= $localStorage.name;
-    $scope.repos = $localStorage.myRepos;
+gitStats.controller('repoCtrl', function($localStorage){
+
+    var issues = $localStorage.TOUTES;
 
 
-    $http.get('/api/repos/'+a+'/'+b+'/groups').
-        success(function(data,status){
-        console.log(success);
-            $scope.groupLabels =data;
-        }).
-        error(function(data,status){
-            console.log(status);
-        });
-
-
-    $scope.addGroupLabel = function(){
-        $http.('api/repos/'+a+'/'+b+'/groups').
-            success(function(data,status){
-            console.log(status);
-
-        }).
-            error(function(data,status){
-            console.log(status);
-        })
+    var data = {
+        labels: ["Time", "February", "March", "April", "May", "June", "July"],
+        datasets: [
+            {
+                label: "My First dataset",
+                fillColor: "rgba(220,220,220,0.2)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: issues
+            }
+            //{
+            //    label: "My Second dataset",
+            //    fillColor: "rgba(151,187,205,0.2)",
+            //    strokeColor: "rgba(151,187,205,1)",
+            //    pointColor: "rgba(151,187,205,1)",
+            //    pointStrokeColor: "#fff",
+            //    pointHighlightFill: "#fff",
+            //    pointHighlightStroke: "rgba(151,187,205,1)",
+            //    data: [28, 48, 40, 19, 86, 27, 90]
+            //}
+        ]
     };
-    $scope.out = function(){
-        $scope.currentUser=undefined;
-        logout.logoutUser();
-    }
-
-
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var myNewChart = new Chart(ctx).Line(data);
 
 });
 

@@ -20,6 +20,10 @@
     "font-awesome": "~4.3.0",
     "less.js": "~2.4.0",
     "ngstorage": "~0.3.0",
+<<<<<<< HEAD
     "lodash": "~3.3.0"
+=======
+    "Chart.js": "~1.0.1"
+>>>>>>> origin/master
   }
 }
