@@ -8,6 +8,7 @@ var publicFolder  = path.join(__dirname + '/../client');
 var tasks         = require('./tasks');
 var models        = require('./models');
 var port = 3000;
+var helpers;
 
 
 /**
@@ -34,6 +35,8 @@ if (!githubEnv.id || !githubEnv.secret) {
 }
 github.auth.config(githubEnv);
 
+
+
 /**
  * EXPRESS CONFIGURATION
  */
@@ -53,6 +56,23 @@ app.use(function (req, res, next) {
   }
   next();
 });
+
+
+
+/**
+ * ROUTING HELPERS
+ */
+helpers = {
+
+  // validates a users auth
+  checkAuth: function (req, res, callback) {
+    if (!req.session.token) {
+      return res.status(400).json({error: 'not logged in'}).end();
+    }
+    callback();
+  }
+
+};
 
 
 
@@ -99,6 +119,17 @@ app.delete('/api/session', function (req, res) {
       res.status(500).end();
     }
     res.status(204).end();
+  });
+});
+
+// retrieves repos
+app.get('/api/repos', function (req, res) {
+  helpers.checkAuth(req, res, function () {
+    tasks.listRepos({}, function (err, data) {
+      console.log('controller');
+      if (err) { return res.status(500).json(err).end(); }
+      res.status(200).json(data).end();
+    });
   });
 });
 
