@@ -12,7 +12,6 @@ module.exports = function (params, callback) {
         client.org(org.login).repos(function (err, data, headers) {
           if (err) { return callback(err); }
           repos = repos.concat(data);
-          console.log('here');
           callback(null, repos);
         });
       });
