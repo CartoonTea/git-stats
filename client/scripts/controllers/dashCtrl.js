@@ -126,6 +126,7 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
     };
 
     $scope.out = function(){
+        $scope.currentUser=undefined;
         logout.logoutUser();
     }
 });
