@@ -55,7 +55,8 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
             console.log(status);
             $scope.glabels.push({
                 name: x
-            })
+            });
+                $scope.newGroupLabel=""
         }).
             error(function(data,status){
             console.log(status);
@@ -64,15 +65,50 @@ gitStats.controller('dashCtrl', function($scope,$localStorage,$stateParams,$stat
 
     //DELETE GROUP LABEL
     $scope.deleteGroupLabel = function (a){
-        $http.delete('api/groups/'+a).
+        $http.delete('/api/groups/'+a).
             success(function(data,status){
                 console.log(status);
-                $scope.glabels.slice(a,1);
+                console.log($scope.glabels);
+                   $scope.glabels.splice(a,1);
+                    $scope.$apply();
+
             }).
             error(function(data,status){
             console.log(status);
 
             });
-};
+    };
 
+    // GETTING LABELS^VALUES OF GROUP LABEL
+    $scope.clickGlabel = function(y,u){
+
+    $http.get('/api/groups/'+y+'/labels').
+        success(function(data,status){
+            console.log(status);
+            $scope.valueLabels= data;
+            console.log($scope.valueLabels);
+            $scope.showing = true;
+            $scope.container = u;
+        }).
+        error(function(data,status){
+           console.log(status);
+        });
+
+    };
+
+    //ADD LABEL TO GROUP.L CONTAINER
+    $scope.addGcontainer = function(o,c){
+        $http.post('/api/groups/'+o+'/labels').
+            success(function(data,status){
+                console.log(status);
+                $scope.valueLabels.push({
+                    "name":o,
+                    "value":c
+                })
+            }).
+            error(function(data,status){
+                console.status;
+            });
+
+    };
 });

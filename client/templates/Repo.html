@@ -31,7 +31,7 @@
                 <th>Labels</th>
             </tr>
             <tr ng-repeat="l in labels">
-                <td>{{l.name}}</td>
+                <td>{{l.name}}<i class="fa fa-plus fa-2x pull-right" style="cursor:pointer;" ng-click="addGcontainer(l.id,0)"></i></td>
             </tr>
         </table>
     </div>
@@ -50,10 +50,29 @@
                     </th>
                 </tr>
                 <tr ng-repeat="l in glabels">
-                        <th ng-click="deleteGroupLabel(l.id)">{{l.name}}<i class="fa fa-trash pull-right fa-2x" style="cursor: pointer"></i></th>
+                        <th style="cursor: pointer;" ng-click="clickGlabel(l.id,l.name)">{{l.name}}<i class="fa fa-trash pull-right fa-2x" style="cursor: pointer"  ng-click="deleteGroupLabel(l.id)"></i></th>
                 </tr>
             </table>
         </div>
+
     <!--GroupLabels-->
+    <!--LabelContainer-->
+    <div class="container groupLabels pull-left" ng-show="showing">
+        <table id="labelGroups" class="table table-hover">
+            <tr>
+                <th colspan="2">{{container}} Group</th>
+
+            </tr>
+            <tr>
+                    <th>Label</th>
+                    <th>Value</th>
+            </tr>
+            <tr ng-repeat="v in valueLabels">
+                <th>{{v.name}}</th>
+                <th><input type="number" class="form-control" ng-model="v.value"></th>
+            </tr>
+        </table>
+    </div>
+    <!--LabelContainer-->
 
 </div>
