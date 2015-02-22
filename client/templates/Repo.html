@@ -71,7 +71,7 @@
             <tr ng-repeat="v in valueLabels">
                 <th>{{v.label}}</th>
                 <th>
-                    <form role="form" ng-submit="setValueC(v.value)">
+                    <form role="form" ng-submit="setValueC(v)">
                     <input type="number" class="form-control" ng-model="v.value">
                     </form>
                 </th>
