@@ -5,6 +5,10 @@ sequelize = new Sequelize('dfpopfrfn1j5rj', 'nnznipgqreabcm', '_BS9rsTBcv3qUfkRw
   host: 'ec2-23-21-94-137.compute-1.amazonaws.com',
   port: '5432',
   dialect: 'postgres',
+  protocol: 'postgres',
+  dialectOptions: {
+    ssl: true
+  },
   pool: {
     max: 5,
     min: 0,
