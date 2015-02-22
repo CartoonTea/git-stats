@@ -2,7 +2,7 @@
  * Created by Mehdi on 2015-02-21.
  */
 
-gitStats.controller('homeCtrl', function($scope,$state,$http,$location){
+gitStats.controller('homeCtrl', function($scope,$state,$http,$location,$localStorage,logoutServ){
     //Public repos
     $scope.getPublicRepos="user,public_repo";
     $scope.redirectPublicPath = 'https://github.com/login/oauth/authorize?client_id=a32040ef864339506ec5&scope='+$scope.getPublicRepos;
@@ -16,9 +16,10 @@ gitStats.controller('homeCtrl', function($scope,$state,$http,$location){
     }, function (value) {
         $scope.CODE = value;
         //POST CODE TO AP
-        if($scope.CODE) {
+        if($scope.CODE !== "") {
             $http.post('/api/session', $scope.CODE).
                 success(function (data, status, headers, config) {
+
                     $state.go('Dashboard');
                 }).
                 error(function (data, status, headers, config) {
@@ -31,6 +32,7 @@ gitStats.controller('homeCtrl', function($scope,$state,$http,$location){
                 console.log(status);
                 console.log(data);
                 $scope.repos = data;
+                $localStorage.myRepos = $scope.repos;
 
             }).
             error(function (data, status, headers, config) {
@@ -38,4 +40,7 @@ gitStats.controller('homeCtrl', function($scope,$state,$http,$location){
             });
     });
 
+        $scope.logout = function(){
+            logoutServ.logoutUser();
+        }
 });

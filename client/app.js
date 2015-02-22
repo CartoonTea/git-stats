@@ -1,5 +1,6 @@
 var gitStats = angular.module('gitStats' , [
-    'ui.router'
+    'ui.router',
+    'ngStorage'
 ]);
 gitStats.config((function($stateProvider,$urlRouterProvider,$httpProvider,$locationProvider) {
 
@@ -12,9 +13,16 @@ gitStats.config((function($stateProvider,$urlRouterProvider,$httpProvider,$locat
                 templateUrl: '/client/templates/Home.html',
                 controller:'homeCtrl'
             })
+            //.state('Repo', {
+            //    url: '/Repo/:RepoName',
+            //    templateUrl: '/client/templates/Repo.html',
+            //    controller:'RepoCrl'
+            //})
             .state('Dashboard', {
                 url: '/Dashboard',
-                templateUrl: '/client/templates/Dashboard.html'
+                templateUrl: '/client/templates/Dashboard.html',
+                controller:'dashCtrl',
+                authenticate: true
             });
 
         $locationProvider.html5Mode(true);
