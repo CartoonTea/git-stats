@@ -117,7 +117,7 @@ app.get('/api/session', function (req, res) {
 
 // destroys a session
 app.delete('/api/session', function (req, res) {
-  req.session.regenerate(function (err) {
+  req.session.destroy(function (err) {
     if (err) {
       res.status(500).end();
     }
@@ -214,6 +214,33 @@ app.post('/api/groups/:id/labels', function (req, res) {
     });
   });
 });
+
+// get labels from group
+app.get('/api/groups/:id/labels', function (req, res) {
+  helpers.checkAuth(req, res, function () {
+    tasks.getLabelsByGroup({
+      groupId: req.params.id
+    }, function (err, data) {
+      if (err) { return res.status(500).json(err).end(); }
+      res.status(200).json(data).end();
+    });
+  });
+});
+
+// delete label from group
+app.delete('/api/groups/:groupId/labels/:labelId', function (req, res) {
+  helpers.checkAuth(req, res, function () {
+    tasks.deleteLabelFromGroup({
+      groupId: req.params.groupId,
+      labelId: req.params.labelId
+    }, function (err, data) {
+      if (err) { return res.status(500).json(err).end(); }
+      res.status(204).json(data).end();
+    });
+  });
+});
+
+// add view
 
 // redirect all other requests to the index file
 app.get('*', function (req, res) {
