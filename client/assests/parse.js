@@ -10,9 +10,9 @@ function buildRelationEvaluator(str) {
             j+=arr[i].length+1;
             if (!isNumber(arr[i])) {
                 if (i<arr.length-1) {
-                    out=out.concat('issue.values.'.concat(arr[i].concat(str.charAt(j))));
+                    out=out.concat('issue.'.concat(arr[i].concat(str.charAt(j))));
                 }else{
-                    out=out.concat('issue.values.'.concat(arr[i]));
+                    out=out.concat('issue.'.concat(arr[i]));
                 }
             }else{
                 if (i<arr.length-1) {
@@ -37,8 +37,8 @@ function buildTimeline(issues){
     }
     times=[];
     for(var i=0;i<issues.length;i++){
-        times.push(issuses[i].created_at);
-        times.push(issuses[i].closed_at);
+        times.push(issues[i].created_at);
+        times.push(issues[i].closed_at);
     }
     times.sort();
     bins=[];
@@ -49,8 +49,9 @@ function buildTimeline(issues){
     for (var i=0;i<issues.length;i++) {
         var issue=issues[i];
         var found=false;
-        for(var j=0;j<issues.length;j++){
+        for(var j=0;j<bins.length;j++){
             var bin=bins[j];
+
             if (!found) {
                 if (issue.created_at>=bin.start&&issue.created_at<bin.stop) {
                     bin.issues.push(issue);
@@ -65,7 +66,11 @@ function buildTimeline(issues){
                 }
                 
             }
-            
+                //data=new google.visualization.DataTable({
+    //         cols: [{id: 'time', label: 'Time', type: 'date'},
+    //           {id: 'load', label: 'Workload', type: 'number'}],
+    //         rows:rows
+    //    })
         }
     }
     return bins;
@@ -85,11 +90,11 @@ function initDataTable(bins,f) {
         rows.push({c:[{v: bin.start}, {v: v}]});
         rows.push({c:[{v: bin.stop}, {v: v}]});
     }
-    data=new google.visualization.DataTable({
-             cols: [{id: 'time', label: 'Time', type: 'date'},
-               {id: 'load', label: 'Workload', type: 'number'}],
-             rows:rows
-        })
+    //data=new google.visualization.DataTable({
+    //         cols: [{id: 'time', label: 'Time', type: 'date'},
+    //           {id: 'load', label: 'Workload', type: 'number'}],
+    //         rows:rows
+    //    })
 }
 
 //function initGraph
@@ -112,8 +117,16 @@ function updateDataTable(bins,f) {
 
 var  f = buildRelationEvaluator('actual/size+actual*size/actual-2*actual');
 console.info(f);
-foo={size:1,actual:3};
-console.info(f(foo));
+foo=[];
+
+foo[0]={size:1,actual:3,created_at:1,closed_at:4};
+foo[1]={size:3,actual:1,created_at:3,closed_at:6};
+foo[2]={size:6,actual:3,created_at:7,closed_at:9};
+
+bins=buildTimeline(foo);
+initDataTable(bins,f);
+
+return;
 
 
  function drawChart() {
