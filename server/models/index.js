@@ -67,6 +67,8 @@ Repository.hasMany(LabelGroup,{as:'labelgroups'});
 Label.hasMany(LabelInGroup,{as:'values'});
 LabelGroup.hasMany(LabelInGroup,{as:'values'});
 
+
+
 module.exports = {
   Repository: Repository,
   Issue: Issue,
@@ -75,5 +77,13 @@ module.exports = {
   LabelInGroup: LabelInGroup,
   User: User
 };
+
+for(var m in module.exports){
+    if (module.exports[m].sync) {
+        module.exports[m].sync();
+    }
+}
+
+
 
 

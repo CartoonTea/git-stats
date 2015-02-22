@@ -8,15 +8,34 @@ module.exports = function (data, callback) {
       callback(err);
       return;
     }
-    user.token = token;
+    
+    var user;
+
     client = github.client(token);
     client.me().emails(function (err, data, headers) {
       if (err) {
         callback(err);
         return;
       }
-      user.email = _.where(data, { primary: true })[0].email;
-      callback(null, user);
+      
+      
+      
+      userEmail = _.where(data, { primary: true })[0].email;
+      
+      models.User.findOrCreate({
+        where:{email:userEmail}
+        }).spread(function(instance,created){
+        
+            user=instance;
+            user.set('oauth_token',token);
+           
+            callback(null, user);
+            
+        }).catch(function(err){
+          callback(err);
+        });
+      
+
     });
   });
 };
