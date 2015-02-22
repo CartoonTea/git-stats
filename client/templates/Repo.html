@@ -1,3 +1,27 @@
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">GitStats</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">MyRepo</a></li>
+                <li ng-click="logout()"><a href="#">LogOut</a></li>
+                <!--<li><a href="#">Link</a></li>-->
+                <!--<li><a href="#">Link</a></li>-->
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
 <div class="row">
     <div class="container-fluid">
         <div class="container groupLabels">
@@ -8,12 +32,15 @@
                 <tr>
                     <th>
                         <form ng-submit="addGroupLabel()">
-                        <input type="text" ng-model="newGroupLabel" placeholder="New group label" class="form-control">
+                            <div class="input-group-addon">
+                                <input type="text" ng-model="newGroupLabel" placeholder="New group label" class="form-control"><i class="fa fa-trash fa-2x"></i>
+                            </div>
                         </form>
                     </th>
                 </tr>
                 <tr ng-repeat="l in glabels">
-                    <th>{{l.name}}</th>
+
+                    <th>{{l.name}}<span class="glyphicon glyphicon-trash"></span></th>
                 </tr>
             </table>
         </div>
