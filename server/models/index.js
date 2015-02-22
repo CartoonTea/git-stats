@@ -70,6 +70,12 @@ module.exports = function (callback) {
     freezeTableName: true 
   });
 
+  var View = sequelize.define('View', {
+    formula: Sequelize.STRING
+  }, {
+    freezeTableName: true
+  });
+
   var out
 
   function setOut(){
@@ -79,7 +85,8 @@ module.exports = function (callback) {
     Label: Label,
     LabelGroup: LabelGroup,
     LabelInGroup: LabelInGroup,
-    User: User
+    User: User,
+    View: View
   };
   }
 
@@ -91,6 +98,7 @@ module.exports = function (callback) {
   Issue.hasMany(Label);
   Label.hasMany(LabelInGroup);
   LabelGroup.hasMany(LabelInGroup);
+  View.belongsTo(Repository);
 
   sequelize.sync();
 
