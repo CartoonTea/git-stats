@@ -1,6 +1,7 @@
 var gitStats = angular.module('gitStats' , [
     'ui.router',
     'ngStorage'
+
 ]);
 gitStats.config((function($stateProvider,$urlRouterProvider,$httpProvider,$locationProvider) {
 
