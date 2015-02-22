@@ -9,12 +9,12 @@ gitStats.config((function($stateProvider,$urlRouterProvider,$httpProvider) {
 
             .state('Home', {
                 url: '/Home',
-                templateUrl: 'templates/Home.html',
+                templateUrl: '/client/templates/Home.html',
                 controller:'homeCtrl'
             })
             .state('Dashboard', {
                 url: '/Dashboard',
-                templateUrl: 'templates/Dashboard.html'
+                templateUrl: '/client/templates/Dashboard.html'
             })
 
     }));

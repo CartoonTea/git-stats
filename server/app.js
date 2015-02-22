@@ -7,7 +7,6 @@ var path          = require('path');
 var publicFolder  = path.join(__dirname + '/../client');
 var tasks         = require('./tasks');
 var models        = require('./models');
-var repomodels    = require('./models/repository.js');
 var port = 3000;
 
 
@@ -74,7 +73,6 @@ app.post('/api/session', function (req, res) {
       res.status(400).send(err.toString());
       return;
     }
-    console.log(data);
     req.session.email = data.email;
     req.session.token = data.token;
     res.status(200).json(data).end();
