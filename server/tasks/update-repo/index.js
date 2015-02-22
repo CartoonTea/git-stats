@@ -5,7 +5,7 @@
  */
 module.exports = function (params, callback) {
 
-  console.log(JSON.stringify(params).red);
+  var repoClient = client.repo(params.owner + '/' + params.name);
 
   // find or create repository
   models.Repository.findOrCreate({
@@ -16,8 +16,9 @@ module.exports = function (params, callback) {
   }).spread(function (repo, created) {
 
     // get labels
-    client.repo(params.owner + '/' + params.name).labels(function (err, data, headers) {
+    repoClient.labels(function (err, data, headers) {
       if (err) { return callback(err); }
+      console.log('here'.green);
       async.each(data, function (labelData, done) {
 
         // find or create label
@@ -35,11 +36,56 @@ module.exports = function (params, callback) {
             done(err);
           });
         }).catch(function (err) {
-          callback(err);
+          done(err);
         });
       }, function (err) {
         if (err) { return callback(err); }
-        callback();
+
+        // get issues
+        repoClient.issues(function (err, data, headers) {
+          if (err) { return callback(err); }
+          async.each(data, function (issueData, done) {
+
+            // find or create issue
+            models.Issue.findOrCreate({
+              where: {
+                url: issueData.url
+              }
+            }).spread(function (issue, created) {
+              issue.set('state', issueData.state);
+              issue.set('title', issueData.title);
+              issue.set('user', issueData.user.login);
+              issue.set('created_at', issueData.created_at);
+              issue.set('closed_at', issueData.closed_at);
+              issue.set('updated_at', issueData.updated_at);
+              issue.save().then(function (issue) {
+                async.each(issueData.labels, function (labelData, done) {
+                  models.Label.findOne({
+                    where: {
+                      url: labelData.url
+                    }
+                  }).then(function (label) {
+                    issue.addLabel(label);
+                    issue.save().then(function (issue) {
+                      done();
+                    }).catch(function (err) {
+                      done(err);
+                    });
+                  }).catch(function (err) {
+                    done(err);
+                  });
+                });
+              }).catch(function (err) {
+                done(err);
+              });
+            }).catch(function (err) {
+              callback(err);
+            });
+          }, function (err) {
+            if (err) { return callback(err); }
+            callback();
+          });
+        });
       });
     });
   }).catch(function (err) {

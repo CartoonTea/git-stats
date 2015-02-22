@@ -32,10 +32,11 @@ module.exports = function (callback) {
   var Issue = sequelize.define('Issue',{
       url: Sequelize.STRING,
       state: Sequelize.STRING,
-      title:Sequelize.STRING,
-      user:Sequelize.STRING,
-      createdAt:{type:Sequelize.DATE,field:'created_at'},
-      closedAt:{type:Sequelize.DATE,field:'closed_at'}
+      title: Sequelize.STRING,
+      user: Sequelize.STRING,
+      created_at: Sequelize.STRING,
+      closed_at: Sequelize.STRING,
+      update_at: Sequelize.STRING
   }, {
     freezeTableName: true 
   });
@@ -86,6 +87,8 @@ module.exports = function (callback) {
 
   Label.belongsTo(Repository);
   LabelGroup.belongsTo(Repository);
+  Issue.belongsTo(Repository);
+  Issue.hasMany(Label);
 
   sequelize.sync();
 

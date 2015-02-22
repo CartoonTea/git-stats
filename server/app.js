@@ -53,8 +53,7 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use(function (req, res, next) {
-    // req.session.token = '721567fa73148aea5f7a07822ddab720319e39c7';
-    // req.session.email = 'connor.bode@gmail.com';
+
   if (req.session.token) {
     client = github.client(req.session.token);
   }
